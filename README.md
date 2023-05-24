@@ -2,6 +2,6 @@
 
 This is a C# website that I worked on as my capstone group project with three others
 
-The javascript and the SQL was not done by me. The work I did was C# code. 
+The javascript, CSS, and the SQL was not done by me. The work I did was C# code and the HTML connected to it. 
 
-Included the JS code to show how it works with the code I wrote. 
+Included the extra code to show how it works with the code I wrote. 
