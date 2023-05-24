@@ -174,18 +174,6 @@ namespace IHLA_Template.Controllers
 
 		public ActionResult EmployeeClassesRoaster()
         {
-			/*
-			List<EmployeeClass> model = new List<EmployeeClass>();
-			List<ClassStudent> students1 = new List<ClassStudent>();
-			List<ClassStudent> students2 = new List<ClassStudent>();
-			students1.Add(new ClassStudent() { Name = "Ray", Notes = "He has to drink water in every hour.", dateOfAssign = "03-01-2021" });
-			students1.Add(new ClassStudent() { Name = "dhruv", Notes = "He has weakness. ", dateOfAssign = "04-01-2021" });
-			students1.Add(new ClassStudent() { Name = "Olivia", Notes = "She is ver angry.", dateOfAssign = "05-01-2021" });
-			students2.Add(new ClassStudent() { Name = "Aakav", Notes = "He has to drink water in every hour.", dateOfAssign = "05-01-2021" });
-			students2.Add(new ClassStudent() { Name = "Aarav", Notes = "He has weakness.", dateOfAssign = "05-01-2021" });
-			students2.Add(new ClassStudent() { Name = "Sophia", Notes = "She is ver angry.", dateOfAssign = "05-01-2021" });
-			model.Add(new EmployeeClass() { self = new Employee() { EmployeeName = "John Smith", EmployeePhone = "8934658518" }, Students = students1 });
-			model.Add(new EmployeeClass() { self = new Employee() { EmployeeName = "Jason Jones", EmployeePhone = "9548245658" }, Students = students2});*/
 
 			List<EmployeeClass> model = EmployeeClass.populate();
 			//model = model.Where(x => x.self.EmployeeID == 1).ToList();
