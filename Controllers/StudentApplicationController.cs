@@ -137,29 +137,6 @@ namespace IHLA_Template.Controllers
 				// Insert StudentParent Record
 				successFlag = su.InsertParentChildJoin(su.parent1, su.student);
 
-				// Get secondary parent info if it exists
-				//if (col["Parent2FirstName"] != null && col["Parent2FirstName"] != "") {
-				//	su.parent2.FirstName = col["parent2.FirstName"];
-				//	su.parent2.LastName = col["parent2.LastName"];
-				//	su.parent2.RelationshipToChild = col["parent2.RelationshipToChild"];
-				//	su.parent2.Address = col["parent2.Address"];
-				//	su.parent2.City = col["parent2.City"];
-				//	su.parent2.State = Int32.Parse(col["parent2.State"]);
-				//	su.parent2.ZipCode = col["parent2.ZipCode"];
-				//	su.parent2.HomePhoneNumber = col["parent2.HomePhoneNumber"];
-				//	su.parent2.MobilePhoneNumber = col["parent2.MobilePhoneNumber"];
-				//	su.parent2.WorkPhoneNumber = col["parent2.WorkPhoneNumber"];
-				//	su.parent2.WorkName = col["parent2.WorkName"];
-				//	su.parent2.WorkAddress = col["parent2.WorkAddress"];
-				//	su.parent2.WorkCity = col["parent2.WorkCity"];
-
-				//	// Insert Parent
-				//	su.parent2.UID = su.InsertParent(su.parent2);
-
-				//	// Insert StudentParent Record
-				//	successFlag = su.InsertParentChildJoin(su.parent2, su.student);
-				//}
-
 				// Get Emergency contact info
 				su.emergencyContact.FirstName = col["emergencyContact.FirstName"];
 				su.emergencyContact.LastName = col["emergencyContact.LastName"];
