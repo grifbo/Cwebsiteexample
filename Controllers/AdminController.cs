@@ -95,29 +95,6 @@ namespace IHLA_Template.Controllers
 		}
 
 
-		//[HttpPost]
-		//public ActionResult PendingStudents(FormCollection col)
-		//{
-
-		//	var studentID = col["btnSubmit"];
-
-		//	AdminModel am = new AdminModel();
-		//	am.AdminUser = am.AdminUser.GetUserSession();
-
-		//	//Get Student by Student ID
-		//	am.StudentApplicant = am.GetStudentByStudentID(studentID);
-		//	//Get ParentID by StudentID
-		//	//Get Parent by ParentID
-		//	am.ParentApplicant = am.GetParentByStudentID(studentID);
-
-		//	if (am.AdminUser.UID > 0) {
-		//		return RedirectToAction("StudentApplication", "Admin");
-		//	}
-		//	else {
-		//		return RedirectToAction("Login", "Profile");
-		//	}
-		//}
-
 		public ActionResult StudentApplication(FormCollection col)
 		{
 			var states = States.GetStatesList();
