@@ -1,0 +1,17 @@
+﻿table.PaymentTable {
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+    table.PaymentTable td, table.PaymentTable th {
+        border: 1px solid #AAAAAA;
+        padding: 6px 10px;
+    }
+
+    table.PaymentTable thead {
+        background: #DDDDDD;
+    }
+
+        table.PaymentTable thead th {
+            font-weight: normal;
+        }

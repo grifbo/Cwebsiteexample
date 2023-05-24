@@ -1,0 +1,232 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+
+h2{
+	background-color:cornflowerblue;
+	text-align: center;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+	padding-top: 6em;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+.s-member-div {
+    border: 1px groove white;
+    box-shadow: 5px 10px 5px rgb(0 0 0 / 0.50);
+    margin-bottom: 15px;
+    padding: 5px;
+}
+.form-inline>.form-control{
+    min-width: 300px;
+}
+
+.pl-5 {
+    padding-left: 5em;
+}
+.pb-3 {
+    padding-bottom: 3em;
+}
+
+.s-request-head{
+    
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding: 3px;
+}
+
+.mb-0{
+    margin-bottom: 0px;
+}
+
+
+
+/** Theme 1 **/
+html{
+    min-height: 100%;
+}
+body {
+    min-height: 100%;
+    /*background: linear-gradient(0,yellow, aqua);*/
+    background-color:mintcream;
+    background-attachment: fixed;
+}
+.jumbotron {
+	background-color: cornflowerblue;
+	font-family: 'Comic Sans MS';
+	color:gainsboro;
+	align-content: center;
+	border: 1px groove white;
+	box-shadow: 5px 10px 5px rgb(0 0 0 / 0.50);
+	margin: 15px;
+	padding: 5px;
+}
+
+.button-holder {
+	display: block;
+	margin-top: 35px;
+	margin-bottom: 35px;
+	width:100%;
+}
+.button-superxl {
+	display: block;
+	background-color: cornflowerblue;
+	font-family: 'Comic Sans MS';
+	font-size: 24px;
+	text-align: center;
+	color: gainsboro;
+	align-content: center;
+	border: 1px groove white;
+	border-radius: 15px;
+	box-shadow: 5px 10px 5px rgb(0 0 0 / 0.50);
+	margin-top: 35px;
+	margin-bottom: 35px;
+	padding: 1em;
+	width: 100%;
+}
+
+.button-large {
+	display: inline-block;
+	background-color: cornflowerblue;
+	font-family: 'Comic Sans MS';
+	font-size: 24px;
+	text-align: center;
+	color: gainsboro;
+	align-content: center;
+	border: 1px groove white;
+	border-radius: 15px;
+	box-shadow: 5px 10px 5px rgb(0 0 0 / 0.50);
+	margin-top: 35px;
+	margin-bottom: 35px;
+	padding: 1em;
+	width: 45%;
+}
+
+
+.button {
+	display: block;
+	background-color: yellowgreen;
+	font-family: 'Comic Sans MS';
+	font-size: 24px;
+	text-align: center;
+	color: gainsboro;
+	align-content: center;
+	border: 1px groove white;
+	border-radius: 15px;
+	box-shadow: 5px 10px 5px rgb(0 0 0 / 0.50);
+	margin-top: 35px;
+	margin-bottom: 35px;
+	padding: 3em;
+	width: 20%;
+}
+.navbar{
+    background-color: cornflowerblue;
+}
+.navbar-brand, .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-nav > li > a:hover{
+    background-color: yellow;
+    color: black;
+}
+
+input,
+select{
+    background-color: white;
+    border: 1em;
+}
+
+input,
+text{
+	border: 1px solid;
+	border-color: blue;
+	background-color: white;
+}
+textarea {
+	border-width: thin;
+	border-color: blue;
+	background-color: white;
+}
+
+input[type=submit]{
+    border : 1px solid black;
+    padding: 9px;
+    background-color: yellow;
+    color: black;
+}
+input[type=submit]:hover {
+    
+    border:1px solid transparent;
+    background-color:cornflowerblue;
+}
+
+.section {
+	overflow: visible;
+	display: block;
+	clear: both;
+	margin: 0 0 1.0em 0;
+	overflow: auto;
+	border: 1px groove white;
+	box-shadow: 5px 10px 5px rgb(0 0 0 / 0.50);
+	padding: 5px;
+}
+
+.item {
+	display: inline-block;
+	align-content: center;
+	border-width: thick;
+	margin-left: 1.0em;
+	margin-right: 1.0em;
+	padding-bottom: 2.0em;
+	padding-right: 1.0em;
+	padding-left: 1.0em;
+}
+
+button, input[type=submit], input[type=button] {
+	cursor: pointer;
+	padding: 12px 30px 12px 30px;
+	background-color: #E4E4E4;
+	color: black;
+	border: 1px solid white;
+}
+
+.editor-field textarea {
+	width: 800px;
+	height: 100px;
+}
+
+.footer {
+	position:static;
+	bottom: 0;
+	width: 100%;
+}
+
+.textarea {
+	Width: 50%;
+	height: 100px;
+}
+
+
+
+
