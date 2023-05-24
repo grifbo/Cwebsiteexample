@@ -1,0 +1,65 @@
+﻿@model List<IHLA_Template.Models.FamilyList>
+@{
+    ViewBag.Title = "FamilyListInfo";
+}
+
+<h2 class="jumbotron text-center">Family List and Info</h2>
+<style>
+    .uline {
+        border-bottom: 1px solid #CCC;
+    }
+
+    h3.mt-0 {
+        margin-top: 0px;
+    }
+</style>
+
+<div>
+    <!--<div class="s-member-div">
+        <h3 class="mt-0 uline text-center">Child Information</h3>
+        <p class="uline"><b>Childern's Name:</b> </p>
+        <p class="uline"><b>Childern's Age:</b> </p>
+        <p class="uline"><b>Childern's Classroom:</b> </p>
+        <div class="uline">
+            <h4 class="uline"><b>Parent Information:</b></h4>
+            <p>Parent Name: </p>
+            <p>Parent Relationship: </p>
+        </div>
+        <div class="uline">
+            <h4 class="uline"><b>Approved Pick-up Person Information:</b></h4>
+            <p>Guardian's Name: </p>
+            <p>Guardian's Relationship: </p>
+        </div>
+    </div>-->
+
+    @foreach (var child in Model)
+    {
+    <div class="s-member-div">
+        <h3 class="mt-0 uline text-center">Child Information</h3>
+        <p class="uline"><b>Child's Name:</b> @child.ChildName</p>
+        <p class="uline"><b>Child's Age:</b> @child.ChildAge</p>
+        <p class="uline"><b>Child's Classroom:</b> @child.ChildClassroom</p>
+        <div class="">
+            <h4 class="uline"><b>Parent Information:</b></h4>
+            <ol>
+                @foreach (var parent in child.Parents)
+                {
+                <li class="uline">
+                    <p><b>Parent Name:</b> @parent.Name</p>
+                </li>
+                }
+            </ol>
+            
+        </div>
+            <div class="">
+                <h4 class="uline"><b>Approved Pick-up Person Information:</b></h4>
+                <p>Pick-Up Person's Name: @child.PickUpPerson.Name</p>
+            </div>
+        </div>
+    }
+    <br />
+    <div style="display:inline">
+        <button class="btn btn-success" onclick="location.href = '/StudentApplication/Application';" align="center" id="AddChild">Add Child</button>
+        <!--<button class="btn btn-success" align="center">Add Adult</button>-->
+    </div>
+</div>

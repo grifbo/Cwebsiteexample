@@ -1,0 +1,42 @@
+﻿@model IHLA_Template.Models.AdminModel
+
+
+@{
+	if (Model.AdminUser.IsAdmin == "Y") {
+		<h3 style="font-size:36px; color:purple; font-family:'Comic Sans MS'; padding-bottom:1em;">Welcome Back, @Model.AdminUser.FirstName </h3>
+
+		<div class="s-member-div" style="background-color:forestgreen; color:white; border-radius:15px;">
+			<h3 align="center"><u>Upcoming Tours</u></h3>
+			@foreach (var item in Model.UpcomingTours)
+			{
+				<table class="table" style="font-size:18px" >
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>Time</th>
+					</tr>
+					<tr>
+						<td>@(item.FirstName + " " + item.LastName)</td>
+						<td>@item.Date</td>
+						<td>@item.Time</td>
+					</tr>
+				</table>
+			}
+		</div>
+        <div class="button-holder">
+			<div>
+				<a class="button-large" href=" ~/Admin/PendingStudents" style="margin-right:4.5em;">Pending Student Applications: @Model.PendingStudentList.Count()</a>
+				<a class="button-large" href=" ~/Admin/PendingEmployee">Pending Employee Applications: @Model.PendingEmployeeList.Count()</a>
+			</div>
+			
+			<a class="button-superxl" href=" ~/Home/AdminManageClasses">Manage Classes</a>
+            @Html.ActionLink("Manage Payments", "Payments", "Admin", new { @class = "button-superxl" })
+            @Html.ActionLink("Add Event", "AddEvent", "Admin", new { @class = "button-superxl" })
+        </div>
+
+	}
+	else {
+		<h4>Sorry, Admin Access only</h4>
+
+	}
+}

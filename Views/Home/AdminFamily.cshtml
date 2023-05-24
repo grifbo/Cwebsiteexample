@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "AdminFamily";
+}
+
+<h2 class="jumbotron text-center">Families</h2>
+
+<div>
+    @*Write a foreach to find the parents*@
+    <div class="s-member-div">
+        <ul>
+            <h3>Parent 1</h3>
+            <li>Child 1 Name</li>
+            <li>Child 2 Name</li>
+            @*Write a foreach to find the parent children*@
+        </ul>
+        <div align="right">
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("AdminFamilyPage", "Home")';return false;">
+                Edit
+            </button>
+        </div>
+    </div>
+    <div class="s-member-div">
+        <ul>
+            <h3>Parent 2</h3>
+            <li>Child 1 Name</li>
+            <li>Child 2 Name</li>
+            @*Write a foreach to find the parent children*@
+        </ul>
+        <div align="right">
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("AdminFamilyPage", "Home")';return false;">
+                Edit
+            </button>
+        </div>
+    </div>
+    <div class="s-member-div">
+        <ul>
+            <h3>Parent 3</h3>
+            <li>Child 1 Name</li>
+            <li>Child 2 Name</li>
+            @*Write a foreach to find the parent children*@
+        </ul>
+        <div align="right">
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("AdminFamilyPage", "Home")';return false;">
+                Edit
+            </button>
+        </div>
+    </div>
+    <div class="s-member-div">
+        <ul>
+            <h3>Parent 4</h3>
+            <li>Child 1 Name</li>
+            <li>Child 2 Name</li>
+            @*Write a foreach to find the parent children*@
+        </ul>
+        <div align="right">
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("AdminFamilyPage", "Home")';return false;">
+                Edit
+            </button>
+        </div>
+    </div>
+    <div align="right">
+        <button class="btn btn-danger" onclick="window.location.reload();">
+            Next Page ->
+        </button>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model IHLA_Template.Models.User
+
+@{
+	ViewBag.Title = "Profile Page index";
+	// Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="jumbotron text-center text-uppercase">Profile Information</h2>
+<br />
+<h4>@ViewBag.Message</h4>
+
+@{
+
+	if (Model.UID > 0) {
+		using (Html.BeginForm("Index", "Profile", FormMethod.Post)) {
+			<div class="section">
+				<div class="item">
+					<div>@Html.LabelFor(model => Model.FirstName)</div>
+					<div>@Html.TextBoxFor(model => Model.FirstName, new { required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => Model.LastName)</div>
+					<div>@Html.TextBoxFor(model => Model.LastName, new { required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => Model.Email)</div>
+					<div>@Html.TextBoxFor(model => Model.Email, new { required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => Model.UserID)</div>
+					<div>@Html.TextBoxFor(model => Model.UserID, new { required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => Model.Password)</div>
+					<div>@Html.TextBoxFor(model => Model.Password, new { @type = "password", required = "required" })</div>
+				</div>
+			</div>
+			<!--After this should be the statement from the company and sig box-->
+			<div>
+				<button id="btnSubmit" name="btnSubmit" value="submit" class="btn btn-success"> Submit</button>
+			</div>
+		}
+	}
+	else {
+		<h4>Sign-in Required</h4>
+		<br />
+		<h5>@Html.ActionLink("Log-In", "Login", "Profile")</h5>
+		<h5>@Html.ActionLink("SignUp", "SignUp", "Profile")</h5>
+	}
+}
+

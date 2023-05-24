@@ -1,0 +1,51 @@
+﻿@model IHLA_Template.Models.ListEmployeeStudent
+@{
+    ViewBag.Title = "Manage Classes";
+}
+
+<h2 class="jumbotron">@ViewBag.Title</h2>
+
+@using (Html.BeginForm("AdminManageClasses", "Home", FormMethod.Post)) {
+<div class="section">
+	<br>
+    <div class="item">
+        <div>@Html.Label("Classroom")</div>
+        <div>@Html.DropDownList("Classroom", new SelectList(Model.Classroom, "EmployeeID", "EmployeeName"))</div>
+    </div>
+    <div class="item">
+        <div>@Html.Label("Children")</div>
+        <div>@Html.DropDownList("Childern", new SelectList(Model.Children, "ID", "Name"))</div>
+    </div>
+    <div class="item">
+        <div>@Html.Label("DOA", "Date of Assignment")</div>
+        <div>@Html.TextBox("DOA", "", new { @type = "date", @required = "true" })</div>
+    </div>
+    <div class="item">
+        <div id="error_text">
+            @if (ViewBag.message != null) { 
+            <div class="alert alert-@ViewBag.m_type">@ViewBag.message</div>
+             }
+        </div>
+    </div>
+</div>
+<!--After this should be the statement from the company and sig box-->
+<div>
+    <button type="button" onclick="submit_data(this)" id="btnSubmit" name="btnSubmit" value="submit" class="btn btn-success"> Submit</button>
+</div>
+
+<script>
+    function submit_data(s_button) {
+                var myForm = document.forms[0];
+                try {
+                    if (myForm["DOA"].value == "") throw ("Date of Assisnment is required");
+                    myForm.submit();
+
+                } catch (e) {
+                    var e_text = document.getElementById("error_text");
+                    e_text.innerHTML = "<div class='alert alert-danger'>" +
+                        e +
+                        "</div>";
+                }
+            }
+</script>
+}

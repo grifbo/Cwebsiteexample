@@ -1,0 +1,45 @@
+﻿@model IHLA_Template.Models.Payments
+@{
+	ViewBag.Title = "Payments";
+}
+
+<h2>Payments</h2>
+<br />
+<h3> @ViewBag.Message </h3>
+<br />
+@{
+	IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+	u = u.GetUserSession();
+	if (u.IsAdmin == "Y") {
+
+		using (Html.BeginForm(FormMethod.Post)) {
+			<div class="section">
+				<h4> Add New Payment Record:</h4>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentID)</div>
+					<div>@Html.DropDownListFor(model => model.ParentID, (IEnumerable<SelectListItem>)ViewData["Parents"])</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.Charge)</div>
+					<div>@Html.TextBoxFor(model => model.Charge)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.Credit)</div>
+					<div>@Html.TextBoxFor(model => model.Credit)</div>
+				</div>
+			</div>
+			<div>
+				<button id="btnSubmit" name="btnSubmit" value="submit" class="btn btn-success"> Submit</button>
+			</div>
+		}
+
+	}
+
+	else {
+
+		<h4>Sorry, Admin Access only</h4>
+		@Html.ActionLink("Sign In", "LogIn", "Profile")
+	}
+
+}
+

@@ -1,0 +1,36 @@
+﻿@{
+
+
+    ViewBag.Title = "DateScheduled";
+}
+
+@{
+
+    if (ViewBag.SuccessFlag == 1)
+    {
+        <h2>Thank you!</h2>
+
+        <h3> Your tour was Scheduled for @ViewBag.Date at @ViewBag.Time.</h3>
+
+        <p>
+            An Email will be sent your address for confromation.
+        </p>
+
+        <button class="btn btn-success" onclick="location.href='@Url.Action("Index", "Home")';return false;">
+            Done!
+        </button>
+
+    }
+    else
+    {
+        <h2>An error has occured Please try again later.</h2>
+
+        <button class="btn btn-success" onclick="location.href='@Url.Action("NewTour", "Tours")';return false;">
+            Return
+        </button>
+
+    }
+}
+
+
+

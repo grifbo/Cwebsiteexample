@@ -1,0 +1,272 @@
+﻿@model IHLA_Template.Models.EmployeeApplications
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="jumbotron text-center text-uppercase">@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+
+
+@{ IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+    u = u.GetUserSession();
+    if (ViewBag.IDCheck == false)
+    {
+        if (u.UID > 0)
+        {
+            using (Html.BeginForm())
+            {
+
+                <h3>General Information</h3>
+
+                <div class="s-member-div">
+
+                    @Html.LabelFor(model => model.FirstName, "First Name")  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; @Html.LabelFor(model => model.LastName, "Last Name")
+                    <br>
+                    @Html.TextBoxFor(model => model.FirstName, new { @required = "required" })   @Html.TextBoxFor(model => model.LastName, new { @required = "required" })
+
+                    <br>
+
+                    @Html.LabelFor(model => model.Address) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; @Html.LabelFor(model => model.City) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&ensp;&ensp; @Html.LabelFor(model => model.State) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; @Html.LabelFor(model => model.Zip)
+                    <br>
+
+                    @Html.TextBoxFor(model => model.Address, new { @required = "required" }) @Html.TextBoxFor(model => model.City, new { @required = "required" }) @Html.DropDownListFor(model => model.State, (IEnumerable<SelectListItem>)ViewData["States"])@Html.TextBoxFor(model => model.Zip, new { @required = "required" })<br>
+
+                    @Html.LabelFor(model => model.PhoneNumber, "Phone Number")
+                    <br>
+                    @Html.TextBoxFor(model => model.PhoneNumber, new { @required = "required" })
+
+                    <br>
+                    <br>
+
+                    @Html.LabelFor(model => model.Email, "Email")
+                    <br>
+                    @Html.TextBoxFor(model => model.Email, new { @required = "required" })
+                    <br>
+                    <br>
+                    @Html.LabelFor(model => model.EmergencyContact, "Emergency Contact")
+                    <br>
+                    @Html.TextBoxFor(model => model.EmergencyContact, new { @required = "required" })
+                    <br>
+                    @Html.LabelFor(model => model.EmergecyNumber, "Emergecy Number")
+                    <br>
+                    @Html.TextBoxFor(model => model.EmergecyNumber, new { @required = "required" })
+                    <br>
+                    <br>
+                    Are you eligible to work in the United States?<br>
+                    Yes @Html.RadioButtonFor(model => model.UsaEligible, 'Y') &emsp; No @Html.RadioButtonFor(model => model.UsaEligible, 'N')<br>
+
+                    Have you ever been covicted of a misdemeanor ?<br>
+                    Yes @Html.RadioButtonFor(model => model.Misdemeanor, 'Y') &emsp; No @Html.RadioButtonFor(model => model.Misdemeanor, 'N')<br>
+
+                    Have you ever been covicted of a felony?<br>
+                    Yes @Html.RadioButtonFor(model => model.Felony, 'Y') &emsp; No @Html.RadioButtonFor(model => model.Felony, 'N')<br>
+
+                    <br>
+                    Explain your covictions. If not covicted, please type N/A<br>
+                    @Html.TextAreaFor(Model => Model.CovictionExplained, new { @style = "width:100%; height:100px;" })<br>
+
+
+                </div>
+
+                <h3>Employment Desired</h3>
+
+                <div class="s-member-div">
+
+                    <b>I am available to work:</b><br><br>
+
+                    <!--is there any way with asp to make this mess cleaner???-->
+                    @Html.LabelFor(model => model.FullTime, "Full Time") <br>
+                    Yes @Html.RadioButtonFor(model => model.FullTime, 'Y') &emsp; No @Html.RadioButtonFor(model => model.FullTime, 'N')<br>
+                    @Html.LabelFor(model => model.PartTime, "Part Time")<br>
+                    Yes @Html.RadioButtonFor(model => model.PartTime, 'Y') &emsp; No @Html.RadioButtonFor(model => model.PartTime, 'N')<br>
+                    <br>
+
+                    @Html.LabelFor(model => model.StartDate, "Date available:")
+                    <br>
+                    @Html.TextBoxFor(model => model.StartDate, new { @type = "date", @class = "form-control datepicker" })
+
+                    <br>
+
+                    @Html.LabelFor(model => model.Pay, "Expected compenstaion:")
+                    <br>
+                    @Html.TextBoxFor(model => model.Pay, new { @required = "required" })
+
+                    <br>
+                    <br>
+                    @Html.LabelFor(model => model.AgeCheck, "Are you at least 18 years old?")
+                    <br>
+                    Yes @Html.RadioButtonFor(model => model.AgeCheck, 'Y') &emsp; No @Html.RadioButtonFor(model => model.AgeCheck, 'N')<br>
+
+                </div>
+
+                <h3>Employment History</h3>
+                <p>Please give us your past three jobs you worked</p>
+
+                <div class="s-member-div">
+                    <p><b>Employer 1:</b></p>
+
+                    @Html.LabelFor(model => model.em1.Employer, "Employre name:")   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    @Html.LabelFor(model => model.em1.Employer, "Job Title:")<br>
+                    @Html.TextBoxFor(Model => Model.em1.Employer) &emsp; @Html.TextBoxFor(Model => Model.em1.JobTitle)<br>
+
+                    <br>
+
+                    <b>date of employment:</b><br>
+                    <b>From</b>  @Html.TextBoxFor(model => model.em1.DOEStart, new { @type = "date", @class = "form-control datepicker" })
+                    <b>To</b>  @Html.TextBoxFor(model => model.em1.DOEEnd, new { @type = "date", @class = "form-control datepicker" })<br>
+
+                    @Html.LabelFor(model => model.em1.Address) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; @Html.LabelFor(model => model.em1.City) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&ensp;&ensp; @Html.LabelFor(model => model.em1.State) &emsp;&emsp;&emsp; @Html.LabelFor(model => model.em1.Zip)
+                    <br>
+                    @Html.TextBoxFor(model => model.em1.Address) @Html.TextBoxFor(model => model.em1.City) @Html.DropDownListFor(model => model.em1.State, (IEnumerable<SelectListItem>)ViewBag.States)@Html.TextBoxFor(model => model.em1.Zip)<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em1.Employer, "Supervisor's Name:")<br>
+                    @Html.TextBoxFor(Model => Model.em1.Supervisor)<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em1.Employer, "Reason for leaving:")<br>
+                    @Html.TextAreaFor(Model => Model.em1.ReasonLeaving, new { @style = "width:100%; height:100px;" })<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em1.Responsibilites, "Desctiption of duties and responsibilites: ")<br>
+                    @Html.TextAreaFor(Model => Model.em1.Responsibilites, new { @style = "width:100%; height:100px;" })<br>
+
+                </div>
+
+                <p><b>Employer 2:</b></p>
+
+                <div class="s-member-div">
+                    @Html.LabelFor(model => model.em2.Employer, "Employre name:")   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    @Html.LabelFor(model => model.em2.Employer, "Job Title:")<br>
+                    @Html.TextBoxFor(Model => Model.em2.Employer) &emsp; @Html.TextBoxFor(Model => Model.em2.JobTitle)<br>
+
+                    <br>
+
+                    <b>date of employment:</b><br>
+                    From  @Html.TextBoxFor(model => model.em2.DOEStart, new { @type = "date", @class = "form-control datepicker" })
+                    To  @Html.TextBoxFor(model => model.em2.DOEEnd, new { @type = "date", @class = "form-control datepicker" })<br>
+
+                    @Html.LabelFor(model => model.em2.Address) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; @Html.LabelFor(model => model.em2.City) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&ensp;&ensp; @Html.LabelFor(model => model.em2.State) &emsp;&emsp;&emsp; @Html.LabelFor(model => model.em2.Zip)
+                    <br>
+                    @Html.TextBoxFor(model => model.em2.Address) @Html.TextBoxFor(model => model.em2.City) @Html.DropDownListFor(model => model.em2.State, (IEnumerable<SelectListItem>)ViewBag.States)@Html.TextBoxFor(model => model.em2.Zip)<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em2.Employer, "Supervisor's Name:")<br>
+                    @Html.TextBoxFor(Model => Model.em2.Supervisor)<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em2.Employer, "Reason for leaving:")<br>
+                    @Html.TextAreaFor(Model => Model.em2.ReasonLeaving, new { @style = "width:100%; height:100px;" })<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em2.Employer, "Desctiption of duties and responsibilites: ")<br>
+                    @Html.TextAreaFor(Model => Model.em2.Responsibilites, new { @style = "width:100%; height:100px;" })<br>
+
+                </div>
+                <div class="s-member-div">
+
+                    <p><b>Employer 3:</b></p>
+
+                    @Html.LabelFor(model => model.em3.Employer, "Employre name:")   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    @Html.LabelFor(model => model.em3.Employer, "Job Title:")<br>
+                    @Html.TextBoxFor(Model => Model.em3.Employer) &emsp; @Html.TextBoxFor(Model => Model.em3.JobTitle)<br>
+
+                    <br>
+
+                    <b>date of employment:</b><br>
+                    From  @Html.TextBoxFor(model => model.em3.DOEStart, new { @type = "date", @class = "form-control datepicker" })
+                    To  @Html.TextBoxFor(model => model.em3.DOEEnd, new { @type = "date", @class = "form-control datepicker" })<br>
+
+                    @Html.LabelFor(model => model.em3.Address) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; @Html.LabelFor(model => model.em3.City) &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&ensp;&ensp; @Html.LabelFor(model => model.em3.State) &emsp;&emsp;&emsp; @Html.LabelFor(model => model.em3.Zip)
+                    <br>
+                    @Html.TextBoxFor(model => model.em3.Address) @Html.TextBoxFor(model => model.em3.City) @Html.DropDownListFor(model => model.em3.State, (IEnumerable<SelectListItem>)ViewBag.States)@Html.TextBoxFor(model => model.em3.Zip)<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em3.Employer, "Supervisor's Name:")<br>
+                    @Html.TextBoxFor(Model => Model.em3.Supervisor)<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em3.Employer, "Reason for leaving:")<br>
+                    @Html.TextAreaFor(Model => Model.em3.ReasonLeaving, new { @style = "width:100%; height:100px;" })<br>
+
+                    <br>
+
+                    @Html.LabelFor(model => model.em3.Employer, "Desctiption of duties and responsibilites: ")<br>
+                    @Html.TextAreaFor(Model => Model.em3.Responsibilites, new { @style = "width:100%; height:100px;" })<br>
+
+
+                </div>
+
+                <h3>Skills and Certifications</h3>
+                <div class="s-member-div">
+
+                    @Html.LabelFor(model => model.Skills, "Skills")
+                    <br>
+                    @Html.TextAreaFor(model => model.Skills, new { @required = "required" })
+
+                    <br>
+
+                    @Html.LabelFor(model => model.Certs, "Certifications")
+                    <br>
+                    @Html.TextAreaFor(model => model.Certs, new { @required = "required", @style = "width:100%; height:100px;" })
+
+                </div>
+
+                <h3>Questionare</h3>
+                <div class="s-member-div">
+
+                    @Html.LabelFor(model => model.CareerGoals, "What are your career goals?")
+                    <br>
+                    @Html.TextAreaFor(model => model.CareerGoals, new { @required = "required", @style = "width:100%; height:100px;" })
+
+                    <br>
+
+                    @Html.LabelFor(model => model.HireYou, "Why should IHLA Hire you?")
+                    <br>
+                    @Html.TextAreaFor(model => model.HireYou, new { @required = "required", @style = "width:100%; height:100px;" })
+
+                    <br>
+
+                    @Html.LabelFor(model => model.ProConduct, "Define a PROFESSIONAL CONDUCT. How does it apply to child care?")
+                    <br>
+                    @Html.TextAreaFor(model => model.ProConduct, new { @required = "required", @style = "width:100%; height:100px;" })
+
+                    <br>
+
+                    @Html.LabelFor(model => model.CustService, "Define CUSTOMER SERVICE. How does it apply to child care?")
+                    <br>
+                    @Html.TextAreaFor(model => model.CustService, new { @required = "required", @style = "width:100%; height:100px;" })
+
+                    <br>
+
+                    @Html.LabelFor(model => model.ToyFight, "Describe your postion on guidance as it relates to 3-year-old children arguing over a toy?")
+                    <br>
+                    @Html.TextAreaFor(model => model.ToyFight, new { @required = "required", @style = "width:100%; height:100px;" })
+
+
+                </div>
+
+                <input type="submit" class="btn btn-success" />
+
+            }
+        }
+        else
+        {
+            <h4>Please Log-in or Sign-up before starting an application</h4>
+            <br />
+            <h5>@Html.ActionLink("Log-In", "Login", "EmployeeApplication")</h5>
+            <h5>@Html.ActionLink("SignUp", "SignUp", "EmployeeApplication")</h5>
+        }
+    }
+    else
+    {
+        <h4>You have already created an application. Please wait for a response.</h4>
+    }
+}

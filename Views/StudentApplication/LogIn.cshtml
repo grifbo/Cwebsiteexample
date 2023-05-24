@@ -1,0 +1,33 @@
+﻿@model IHLA_Template.Models.User
+@{
+	ViewBag.Title = "Log-In";
+}
+<h2>@ViewBag.Title</h2>
+
+<h4 style="color:red">@ViewBag.Message</h4>
+
+<p>Enter your information and click the Sign-In button.</p>
+@using (Html.BeginForm(FormMethod.Post)) {
+	<div class="section">
+		<div class="item">
+			<div>@Html.LabelFor(model => model.UserID)</div>
+			<div>@Html.TextBoxFor(model => model.UserID, new { @autofocus = "autofocus" })</div>
+		</div>
+		<div class="item">
+			<div>@Html.LabelFor(model => model.Password)</div>
+			<div>@Html.TextBoxFor(model => model.Password, new { type = "password" })</div>
+		</div>
+	</div>
+	<div>
+		<button id="btnSignIn" name="btnSubmit" value="signin" class="btn btn-success"> Sign-In</button>
+	</div>
+	<div>
+		New User?
+		@Html.ActionLink("Sign-up", "SignUp")
+	</div>
+	<div>
+		Forgot Password?
+		@Html.ActionLink("Reset Password", "ForgotPassword")
+	</div>
+}
+

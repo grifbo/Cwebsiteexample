@@ -1,0 +1,52 @@
+﻿@model IEnumerable<IHLA_Template.Models.Payments>
+
+@{
+	ViewBag.Title = "Payments";
+}
+
+<h2 class="jumbotron">Payments</h2>
+
+@{
+			IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+			u = u.GetUserSession();
+
+			decimal ovrlTotal = 0.00m;
+			
+
+			if (u.IsParent == "Y") {
+		<table class="table">
+			<tr>
+				<th>Date</th>
+				<th>Charge</th>
+				<th>Credit</th>
+				<th>Total</th>
+			</tr>
+
+			@foreach (var item in Model) {
+				<tr>
+					<td> @item.Date</td>
+					<td> @item.Charge</td>
+					<td> @item.Credit</td>
+					<td> @item.Total</td>
+				</tr>
+				ovrlTotal += item.Total;
+			}
+
+				<tr>
+					<td></td>
+					<td></td>
+					<td>Total:</td>
+					<td>@ovrlTotal</td>
+				</tr>
+
+		</table>
+	}
+
+	else {
+
+		<h3>Payments are only applicable for parents.</h3>
+		<h4>Please sign-in to view payments.</h4>
+		@Html.ActionLink("Sign In", "LogIn", "Profile")
+	}
+
+}

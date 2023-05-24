@@ -1,0 +1,33 @@
+﻿@{
+	ViewBag.Title = "Contact Us";
+}
+
+
+<head>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+
+<h2 class="jumbotron">@ViewBag.Title.</h2>
+
+
+<address>
+	<h3>Inspiring Hearts Learning Academy</h3>
+	8516 Beechmont Ave.<br />
+	Cincinnati, OH 45255<br />
+	<abbr title="Phone">P:</abbr>
+	513-388-0025
+</address>
+
+<div id='map' style='width: 940px; height: 300px;'></div>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaWhsYSIsImEiOiJja3FtdmZudWIxM3puMnBtdmY5eTduc2l4In0._a5xen9fnGhApYZ7wOdzQw';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/ihla/ckqmvgl0z11ay17mxilg4yecn'
+    });
+</script>
+
+<address>
+	<strong>Support:</strong>   <a href="mailto:IHLAWebsite@gmail.com">IHLAWebsite@gmail.com</a><br />
+</address>

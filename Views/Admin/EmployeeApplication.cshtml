@@ -1,0 +1,158 @@
+﻿@model IHLA_Template.Models.EmployeeApplications
+@{
+    /**/
+
+    /**/
+
+    /**/
+
+    ViewBag.Title = "Application";
+}
+
+<h2 class="jumbotron">Employee Application</h2>
+
+@{ IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+    u = u.GetUserSession();
+    if (u.IsAdmin == "Y")
+    {
+
+        <div class="section">
+            <h4> Employee Information</h4>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.FirstName, "First Name")</div>
+                <div>@Html.DisplayFor(model => model.FirstName)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.LastName, "Last Name")</div>
+                <div>@Html.DisplayFor(model => model.LastName)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.Address)</div>
+                <div>@Html.DisplayFor(model => model.Address)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.City)</div>
+                <div>@Html.DisplayFor(model => model.City)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.State)</div>
+                <div>@ViewBag.state</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.Zip)</div>
+                <div>@Html.DisplayFor(model => model.Zip)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.PhoneNumber, "Phone Number")</div>
+                <div>@Html.DisplayFor(model => model.PhoneNumber)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.Email)</div>
+                <div>@Html.DisplayFor(model => model.Email)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.EmergencyContact, "Emergency Contact")</div>
+                <div>@Html.DisplayFor(model => model.EmergencyContact)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.EmergecyNumber, "Emergecy Number")</div>
+                <div>@Html.DisplayFor(model => model.EmergecyNumber)</div>
+            </div>
+        </div>
+        <div class="section">
+            <h4>Eligiblies</h4>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.UsaEligible, "Can work in Usa?")</div>
+                <div>@Html.DisplayFor(model => model.UsaEligible)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.Misdemeanor)</div>
+                <div>@Html.DisplayFor(model => model.Misdemeanor)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.Felony)</div>
+                <div>@Html.DisplayFor(model => model.Felony)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.CovictionExplained, "Conviction explation")</div>
+                <div>@Html.DisplayFor(model => model.CovictionExplained)</div>
+            </div>
+        </div>
+        <div class="section">
+            <h4>Eligiblies</h4>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.FirstName, "Full Time")</div>
+                <div>@Html.DisplayFor(model => model.FirstName)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.PartTime, "Part Time")</div>
+                <div>@Html.DisplayFor(model => model.PartTime)</div>
+            </div>
+        </div>
+        <div class="section">
+            <h4>Skills and certs</h4>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.Skills, "Skills")</div>
+                <div>@Html.DisplayFor(model => model.Skills)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.Certs, "Certification")</div>
+                <div>@Html.DisplayFor(model => model.Certs)</div>
+            </div>
+        </div>
+        <div class="section">
+            <h4>Questionare</h4>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.CareerGoals, "Career Goals")</div>
+                <div>@Html.DisplayFor(model => model.CareerGoals)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.HireYou, "Why should we hire you?")</div>
+                <div>@Html.DisplayFor(model => model.HireYou)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.ProConduct, "Professional Conduct")</div>
+                <div>@Html.DisplayFor(model => model.Misdemeanor)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.CustService, "Customer Service")</div>
+                <div>@Html.DisplayFor(model => model.CustService)</div>
+            </div>
+            <div class="item">
+                <div>@Html.LabelFor(model => model.ToyFight, "Toy Fight problem")</div>
+                <div>@Html.DisplayFor(model => model.ToyFight)</div>
+            </div>
+        </div>
+
+       
+            using (Html.BeginForm("AdminEmployeeApproval", "Admin", FormMethod.Post))
+            {
+                <input type="hidden" name="ID" value="@ViewBag.ID" />
+                <input type="hidden" name="Approval" value="1" />
+                <button id="btnSubmit" name="btnSubmit" class="btn btn-success"> Approve</button>
+            }
+
+            <br/>    
+
+            using (Html.BeginForm("AdminEmployeeApproval", "Admin", FormMethod.Post))
+            {
+                <input type="hidden" name="ID" value="@ViewBag.ID" />
+                <input type="hidden" name="Approval" value="2" />
+                <button id="btnSubmit" name="btnSubmit" class="btn btn-success"> Deny</button>
+            }
+
+            <br/>
+
+        <a class="btn btn-success" href=" ~/Admin/PendingEmployee">Back</a>
+
+    }
+
+    else
+    {
+        <h4>Please Log-in or Sign-up before starting an application</h4>
+        <br />
+        <h5>@Html.ActionLink("Log-In", "Login", "StudentApplication")</h5>
+        <h5>@Html.ActionLink("SignUp", "SignUp", "StudentApplication")</h5>
+    }
+}
+

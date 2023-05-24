@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IHLA_Template.Models.AdminFamilyPageParentInfo>
+@{
+    ViewBag.Title = "AdminFamilyPage";
+}
+
+<h2 class="jumbotron text-center">Admin Family Manager</h2>
+
+<div>
+
+    @foreach (var item in Model)
+    {
+        <div class="s-member-div">
+            <ul>
+                <li>@item.LastName , @item.FirstName</li>
+                <li>@item.PhoneNumber</li>
+            </ul>
+        </div>
+        <div align="right">
+            <button class="btn btn-danger" onclick="location.href='@Url.Action("AdminFamilyDelete", "Admin",new { UID = item.ParentUID})'">Remove</button>
+        </div>
+    }
+  
+    <div class="s-member-div">
+        <ul>
+            <li>@ViewBag.ChildFirstName @ViewBag.ChildLastName</li>
+            <li>@ViewBag.ChildDOB</li>
+        </ul>
+    </div>
+    <br />
+    <div class="form-inline">
+        <button class="btn btn-success">Add Parent</button>
+    </div>
+</div>
+
+
+

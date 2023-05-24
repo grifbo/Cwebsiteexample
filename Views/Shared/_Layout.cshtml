@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title -  IHLA Website</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+
+@{ IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+	u = u.GetUserSession();
+}
+<body>
+
+	<div class="navbar navbar-fixed-top">
+		<img src="~/Content/img/IHLA Banner.jpg" style="width:100%; height:5em;">
+		<div class="container">
+			<div class="navbar-header">
+				@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+				<div class="navbar-brand">  </div>
+				@Html.ActionLink("Enroll", "Index", "StudentApplication", new { area = "" }, new { @class = "navbar-brand" })
+				<div class="navbar-brand">  </div>
+				@Html.ActionLink("Careers", "EmployeeApplications", "EmployeeApplication", new { area = "" }, new { @class = "nav navbar-brand" })
+				<div class="navbar-brand">  </div>
+				@Html.ActionLink("Tour", "NewTour", "Tours", new { area = "" }, new { @class = "nav navbar-brand" })
+				<div class="navbar-brand">  </div>
+				<div class="navbar-brand">  </div>
+			</div>
+			<div>
+				@{
+					if (u.UID > 0) {
+
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button">Menu <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li>@Html.ActionLink("Home", "Index", "Home")</li>
+									<li>@Html.ActionLink("My Profile", "Index", "Profile")</li>
+									<li>@Html.ActionLink("About Us", "About", "Home")</li>
+									<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+									<li>@Html.ActionLink("Log-out", "LogOut", "Profile")</li>
+								</ul>
+							</li>
+						</ul>
+
+						if ((u.IsAdmin == "Y")) {
+							<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" role="button">Admins <span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<li>@Html.ActionLink("Admin Homepage", "Index", "Admin")</li>
+										<li>@Html.ActionLink("Manage Payments", "Payments", "Admin")</li>
+										<li>@Html.ActionLink("Manage Events", "AddEvent", "Admin")</li>
+										<li>@Html.ActionLink("Teacher Assignment", "AdminManageClasses", "Home")</li>
+									</ul>
+								</li>
+							</ul>
+						}
+						if ((u.IsEmployee == "Y")) {
+							<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" role="button">Employees <span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<li>@Html.ActionLink("Class List", "EmployeeClassesRoaster", "Home")</li>
+									</ul>
+								</li>
+							</ul>
+						}
+						if ((u.IsParent == "Y")) {
+							<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" role="button">Parents <span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<li>@Html.ActionLink("My Family", "FamilyListInfo", "Home")</li>
+										<li>@Html.ActionLink("Events", "UpcomingEvents_Lunch", "Home")</li>
+										<li>@Html.ActionLink("Payment History", "Payments", "Profile")</li>
+									</ul>
+								</li>
+							</ul>
+						}
+
+					}
+					else {
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button">Menu <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li>@Html.ActionLink("Home", "Index", "Home")</li>
+									<li>@Html.ActionLink("My Profile", "Index", "Profile")</li>
+									<li>@Html.ActionLink("About Us", "About", "Home")</li>
+									<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+									<li>@Html.ActionLink("Log-In/Register", "LogIn", "Profile")</li>
+								</ul>
+							</li>
+						</ul>
+
+					}
+				}
+			</div>
+		</div>
+	</div>
+	
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+
+	</div>
+	<div>
+		<footer class="footer">
+
+			<p style="display: inline-block">&copy; @DateTime.Now.Year - Cincinnati State Team C</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

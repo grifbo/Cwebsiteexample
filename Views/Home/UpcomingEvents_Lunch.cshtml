@@ -1,0 +1,63 @@
+﻿@model IEnumerable<IHLA_Template.Models.Events>
+@{
+    ViewBag.Title = "lunch and Upcoming Events";
+    ViewBag.Header = "Lunch";
+}
+
+
+
+<div >
+	<h3><u>Upcoming Events</u></h3>
+	@foreach (var Event in Model) {
+		<div class="s-member-div" style="border:solid thin; border-radius:6px; background-color:aliceblue">
+			<h3 align="center"><b>@Event.Event</b></h3>
+			<p class="uline"><b>Date: </b> @Event.EventDate.ToString("MM/dd/yyy")</p>
+			<p class="uline"><b>Time: </b> @Event.Time</p>
+			<p class="uline"><b>Description: </b>@Event.Description</p>
+		</div>
+	}
+</div>
+
+<div style="padding-top:3em">
+
+    <h3><u>Menu</u></h3>
+
+	<table class="table" style="border:thin">
+		<tr>
+			<th></th>
+			<th>Monday</th>
+			<th>Tuesday</th>
+			<th>Wednesday</th>
+			<th>Thursday</th>
+			<th>Friday</th>
+		</tr>
+		<tr style="border-right:medium">
+			<td style="font:bold;">Breakfast: </td>
+			<td>Mini pancakes, blueberries, milk</td>
+			<td>Hashbrown patties, canteloupe, milk</td>
+			<td>Cinnamon rolls, raspberries, milk</td>
+			<td>French toast sticks, watermelon, milk</td>
+			<td>Cereal, raisins, milk</td>
+		</tr>
+		<tr>
+			<td>Lunch: </td>
+			<td>Turkey and cheese wraps, peas, bananas, milk</td>
+			<td>Meatball subs, greenbeans, pineapple, milk</td>
+			<td>Chicken and broccoli alfredo, peaches, milk</td>
+			<td>Pizza bagels, corn, oranges, milk</td>
+			<td>Chicken tenders, steak fries, apple sauce, milk</td>
+		</tr>
+		<tr>
+			<td>Snack: </td>
+			<td>Veggie straws, water</td>
+			<td>Apple slices, cheese cubes, water</td>
+			<td>Shortbread cookies, water</td>
+			<td>Apple slices, cheese cubes, water</td>
+			<td>Celery, peanut butter, water</td>
+		</tr>
+	</table>
+</div>
+
+
+
+

@@ -1,0 +1,40 @@
+﻿@model  IHLA_Template.Models.AdminModel
+
+@{
+	ViewBag.Title = "AddEvent";
+}
+
+<h2>AddEvent</h2>
+
+@{ IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+	u = u.GetUserSession();
+	if (u.IsAdmin == "Y") {
+		using (Html.BeginForm(FormMethod.Post)) {
+			<br />
+			<h3>@ViewBag.Message</h3>
+			<br />
+			<div class="item">
+				<div>@Html.LabelFor(model => model.NewEvent.Event)</div>
+				<div>@Html.TextBoxFor(model => model.NewEvent.Event, new { @required = "required" })</div>
+			</div>
+			<div class="item">
+				<div>@Html.LabelFor(model => model.NewEvent.EventDate)</div>
+				<div>@Html.TextBoxFor(model => model.NewEvent.EventDate, new { @type = "date" })</div>
+			</div>
+			<input type="time" id="Time" name="Time">
+			<br />
+			<div class="item">
+				<div>@Html.LabelFor(model => model.NewEvent.EventDate)</div>
+				<div>@Html.TextAreaFor(model => model.NewEvent.Description, new { @class = "form-control form-control-full", rows = 8 })</div>
+			</div>
+			
+			<div>
+				<button id="btnSubmit" name="btnSubmit" value="submit" class="btn btn-success"> Submit</button>
+			</div>
+
+		}
+	}
+	else {
+		<h4>Sorry, Admin Access only</h4>
+	}
+}

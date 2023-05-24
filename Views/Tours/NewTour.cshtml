@@ -1,0 +1,39 @@
+﻿@model IHLA_Template.Models.Tours
+@{
+	ViewBag.Title = "NewTour";
+}
+
+
+<div>
+	<h2>Book A Tour</h2>
+</div>
+
+<div align="center" style="display:block; padding-top:2em; padding-bottom:2em;">
+	<div style="display:inline-block">
+		@using (Html.BeginForm()) {
+
+			@Html.LabelFor(model => model.FirstName)
+			@Html.TextBoxFor(model => model.FirstName)
+			<br />
+			@Html.LabelFor(model => model.LastName)
+			@Html.TextBoxFor(model => model.LastName)
+			<br />
+			@Html.LabelFor(model => model.Email)
+			@Html.TextBoxFor(model => model.Email)
+			<br />
+			@Html.TextBoxFor(model => model.Date, new { @type = "date", @class = "form-control datepicker" })
+
+
+
+			if (ViewBag.Dateused == 1) {
+				Html.Display("Date has already been used. Please try again!");
+			}
+
+			<br />
+			<input type="time" id="Time" name="Time" step="3600" min="09:00" max="17:00">
+			<input type="submit" value="Submit" class="btn btn-success" style="background-color:green; color:white;" />
+
+		}
+	</div>
+	<img src="~/Content/img/IHLA Logo Large.jpg" align="right" style="max-width:50%; padding-left:2.0em; padding-right:2.0em; display:inline-block;">
+</div>

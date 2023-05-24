@@ -1,0 +1,45 @@
+﻿@model IHLA_Template.Models.AdminModel
+
+@{
+    ViewBag.Title = "PendingEmployees";
+}
+
+<h2>Pending Employee Applications</h2>
+
+@{
+    IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+    u = u.GetUserSession();
+
+    if (u.IsAdmin == "Y")
+    {
+        <table class="table">
+            <tr>
+                <th>Employee Name</th>
+                <th>Application Date</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.PendingEmployeeList)
+            {
+                <tr>
+                    <td> @item.FirstName @item.LastName</td>
+                    <td> @item.DateOfApplication.ToShortDateString()</td>
+                    <td> @using (Html.BeginForm("EmployeeApplication", "Admin", FormMethod.Post))
+                    {<button id="btnSubmit" name="btnSubmit" value="@item.UID" class="btn btn-success"> Review</button>}</td>
+                </tr>
+            }
+
+        </table>
+
+        <a class="btn btn-success" href=" ~/Admin/Index">Back</a>
+    }
+
+    else
+    {
+
+        <h3>Pending Application view is for Admins only</h3>
+        <h4>Please sign-in to view applications.</h4>
+        @Html.ActionLink("Sign In", "LogIn", "Profile")
+    }
+
+}

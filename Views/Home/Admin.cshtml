@@ -1,0 +1,42 @@
+﻿<h2 class="jumbotron text-center mb-0">Admin Homepage</h2>
+
+<!--Dont know what vaiable to grab yet-->
+<h3>Hello, @ViewBag.FirstName</h3>
+
+<div>
+    <button class="btn btn-success" >Open Requests</button> 
+    
+	<button class="btn btn-success" onclick="location.href='@Url.Action("AdminFamily", "Home")';return false;">
+        Manage Families
+    </button> 
+	<button class="btn btn-success" onclick="location.href='@Url.Action("AdminManageEmployees", "Home")';return false;">
+        Manage Employees
+    </button>
+
+</div>
+
+<br>
+<br>
+
+<!--thought to add this for quick info-->
+<div>
+    <table class="table">
+        <tr class="bg-primary">
+            <th>Enrollment Applications</th>
+            <th>Employment Applications</th>
+            <th>Next Tour</th>
+            <th>Number of students</th>
+            <th>Number of Employees</th>
+        </tr>
+
+        <tr>
+            <th>@ViewBag.childrenApps</th>
+            
+        <th>@ViewBag.EmployeeApps</th>
+            <!--tempDate-->
+            <th>2/8/2021</th>
+            <th>@ViewBag.childrenEnrolled</th>
+            <th>@ViewBag.EmployeesEnployed</th>
+        </tr>
+    </table>
+</div>

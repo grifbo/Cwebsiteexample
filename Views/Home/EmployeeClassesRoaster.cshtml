@@ -1,0 +1,53 @@
+@model List<IHLA_Template.Models.EmployeeClass>
+@{
+    ViewBag.Title = "Class Roster";
+}
+<h2>Class Roster</h2>
+<style>
+    .uline {
+        border-bottom: 1px solid #ccc;
+        /*background-color:;*/
+    }
+    .float-right{
+        float: right;
+        display:none;
+    }
+    h2 {
+        margin: 0px;
+    }
+    
+</style>
+
+<!--<div class="s-member-div">
+    <h2 class="s-request-head">John Smith</h2>
+    <h2>Phone:8934658518</h2><br>
+    <p id="fcnamae"><sup>1st</sup> Children Name: Ravi</p>
+    <p id="fcnote">Children Notes: He has to drink water in every hour.</p>
+    <p id="fcas">Date of assign: 03-01-2021</p><br>
+    <p id="scnamae"><sup>2st</sup>Children Name: dhruv</p>
+    <p id="scnote">Children Notes: he has weakness. </p>
+    <p id="scas">Date of assign:04-01-2021</p><br>
+    <p id="tcnamae"<sup>3st</sup>Children Name: Olivia</p>
+    <p id="tcnote">Children Notes: She is ver angy.</p>
+    <p id="tcas">Date of assign: 05-01-2021</p>
+</div>-->
+<div>
+@foreach (var employee in Model)
+{
+<div class="s-member-div">
+    <h2 class="s-request-head"><div>@employee.self.EmployeeName <a href="@Model.IndexOf(employee)" class="btn btn-primary float-right glyphicon glyphicon-edit"></a></div></h2>
+    <h2>Phone:@employee.self.EmployeePhone</h2><br>
+    <ol>
+        @foreach (var student in employee.Students)
+        {
+        <li class="uline">
+            <a href="#" class="btn mt-5 float-right btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+            <p>Children Name : @student.Name</p>
+            <p>Children Notes: @student.Notes</p>
+            <p>Date of assign: @student.dateOfAssign</p>
+        </li>
+        }
+    </ol>
+</div>
+}
+  </div>

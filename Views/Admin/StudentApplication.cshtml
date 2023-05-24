@@ -1,0 +1,111 @@
+﻿@model IHLA_Template.Models.AdminModel
+@{
+	/**/
+
+	/**/
+
+	/**/
+
+	ViewBag.Title = "Application";
+}
+
+<h2 class="jumbotron">Student Application</h2>
+
+@{ IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+	u = u.GetUserSession();
+	if (u.IsAdmin == "Y") {
+			<div class="section">
+				<h4> Student Information</h4>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.StudentID)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.StudentID, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.FirstName)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.FirstName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.LastName)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.LastName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.Address)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.Address, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.City)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.City, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.State)</div>
+					<div>@Html.Display("StudentState", @ViewData["StudentState"])</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.ZipCode)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.ZipCode, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.HomePhoneNumber)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.HomePhoneNumber, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.DateOfBirth)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.DateOfBirth)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.ExpectedStartDate)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.ExpectedStartDate)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.StudentApplicant.AdditionalInformation)</div>
+					<div>@Html.DisplayFor(model => model.StudentApplicant.AdditionalInformation, new { @style = "width:100%" })</div>
+				</div>
+
+
+			</div>
+
+			<div class="section">
+				<h4> Primary Parent Information</h4>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentApplicant.FirstName)</div>
+					<div>@Html.DisplayFor(model => model.ParentApplicant.FirstName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentApplicant.LastName)</div>
+					<div>@Html.DisplayFor(model => model.ParentApplicant.LastName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentApplicant.Address)</div>
+					<div>@Html.DisplayFor(model => model.ParentApplicant.Address, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentApplicant.City)</div>
+					<div>@Html.DisplayFor(model => model.ParentApplicant.City, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentApplicant.State)</div>
+					<div>@Html.Display("ParentState", @ViewData["ParentState"])</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentApplicant.ZipCode)</div>
+					<div>@Html.DisplayFor(model => model.ParentApplicant.ZipCode, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.ParentApplicant.HomePhoneNumber)</div>
+					<div>@Html.DisplayFor(model => model.ParentApplicant.HomePhoneNumber, new { @required = "required" })</div>
+				</div>
+			</div>
+		using (Html.BeginForm("ApproveStudent", "Admin", FormMethod.Post)) {<button id="btnSubmit" name="btnSubmit" value="@Model.StudentApplicant.StudentID" class="btn btn-success">Approve</button>}
+	}
+
+	else {
+		< h4 > Please Log -in or Sign-up before starting an application</ h4 >
+
+		< br />
+
+		< h5 > @Html.ActionLink("Log-In", "Login", "StudentApplication") </ h5 >
+
+		< h5 > @Html.ActionLink("SignUp", "SignUp", "StudentApplication") </ h5 >
+	}
+}
+

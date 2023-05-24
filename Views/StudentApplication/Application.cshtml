@@ -1,0 +1,329 @@
+﻿@model IHLA_Template.Models.StudentApplication
+@{
+	/**/
+
+	/**/
+
+	/**/
+
+	ViewBag.Title = "Application";
+}
+
+<h2 class="jumbotron">Student Application</h2>
+
+@{ IHLA_Template.Models.User u = new IHLA_Template.Models.User();
+	u = u.GetUserSession();
+	if (u.UID > 0) {
+		using (Html.BeginForm(FormMethod.Post)) {
+
+<div class="section">
+	<h4> Student Information</h4>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.FirstName)</div>
+		<div>@Html.TextBoxFor(model => model.student.FirstName, new { @required = "required" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.LastName)</div>
+		<div>@Html.TextBoxFor(model => model.student.LastName, new { @required = "required" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.Address)</div>
+		<div>@Html.TextBoxFor(model => model.student.Address, new { @required = "required" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.City)</div>
+		<div>@Html.TextBoxFor(model => model.student.City, new { @required = "required" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.State)</div>
+		<div>@Html.DropDownListFor(model => model.student.State, (IEnumerable<SelectListItem>)ViewData["States"], new { @required = "required" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.ZipCode)</div>
+		<div>@Html.TextBoxFor(model => model.student.ZipCode, new { @required = "required" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.HomePhoneNumber)</div>
+		<div>@Html.TextBoxFor(model => model.student.HomePhoneNumber, new { @required = "required" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.DateOfBirth)</div>
+		<div>@Html.TextBoxFor(model => model.student.DateOfBirth, new { @type = "date" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.ExpectedStartDate)</div>
+		<div>@Html.TextBoxFor(model => model.student.ExpectedStartDate, new { @type = "date" })</div>
+	</div>
+	<div class="item">
+		<div>@Html.LabelFor(model => model.student.AdditionalInformation)</div>
+		<div>@Html.TextAreaFor(model => model.student.AdditionalInformation)</div>
+	</div>
+
+	
+</div>
+
+			<div class="section">
+				<h4> Primary Parent Information</h4>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.FirstName)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.FirstName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.LastName)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.LastName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.RelationshipToChild)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.RelationshipToChild, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.Address)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.Address, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.City)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.City, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.State)</div>
+					<div>@Html.DropDownListFor(model => model.parent1.State, (IEnumerable<SelectListItem>)ViewData["States"], new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.ZipCode)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.ZipCode, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.HomePhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.HomePhoneNumber, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.MobilePhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.MobilePhoneNumber)</div>
+				</div>
+				@*<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.WorkPhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.WorkPhoneNumber, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.WorkName)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.WorkName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.WorkAddress)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.WorkAddress, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent1.WorkCity)</div>
+					<div>@Html.TextBoxFor(model => model.parent1.WorkCity, new { @required = "required" })</div>
+				</div>*@
+			</div>
+
+			@*<div class="section">
+				<h4> Secondary Parent Information</h4>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.FirstName)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.FirstName, new { @autofocus = "autofocus" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.LastName)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.LastName)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.RelationshipToChild)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.RelationshipToChild)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.Address)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.Address)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.City)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.City)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.State)</div>
+					<div>@Html.DropDownListFor(model => model.parent2.State, (IEnumerable<SelectListItem>)ViewData["States"])</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.ZipCode)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.ZipCode)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.HomePhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.HomePhoneNumber)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.MobilePhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.MobilePhoneNumber)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.WorkPhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.WorkPhoneNumber)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.WorkName)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.WorkName)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.WorkAddress)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.WorkAddress)</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.parent2.WorkCity)</div>
+					<div>@Html.TextBoxFor(model => model.parent2.WorkCity)</div>
+				</div>
+			</div>*@
+
+			<div class="section">
+				<h4> Emergency Contact Information</h4>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.emergencyContact.FirstName)</div>
+					<div>@Html.TextBoxFor(model => model.emergencyContact.FirstName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.emergencyContact.LastName)</div>
+					<div>@Html.TextBoxFor(model => model.emergencyContact.LastName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.emergencyContact.RelationshipToChild)</div>
+					<div>@Html.TextBoxFor(model => model.emergencyContact.RelationshipToChild, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.emergencyContact.City)</div>
+					<div>@Html.TextBoxFor(model => model.emergencyContact.City, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.emergencyContact.State)</div>
+					<div>@Html.DropDownListFor(model => model.emergencyContact.State, (IEnumerable<SelectListItem>)ViewData["States"])</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.emergencyContact.PhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.emergencyContact.PhoneNumber, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.emergencyContact.OtherPhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.emergencyContact.OtherPhoneNumber, new { @required = "required" })</div>
+				</div>
+			</div>
+
+			<div class="section">
+				<h4> Physician Information</h4>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.physician.PhysicianName)</div>
+					<div>@Html.TextBoxFor(model => model.physician.PhysicianName, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.physician.PhysicianStreetAddress)</div>
+					<div>@Html.TextBoxFor(model => model.physician.PhysicianStreetAddress, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.physician.PhysicianCity)</div>
+					<div>@Html.TextBoxFor(model => model.physician.PhysicianCity, new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.physician.PhysicianState)</div>
+					<div>@Html.DropDownListFor(model => model.physician.PhysicianState, (IEnumerable<SelectListItem>)ViewData["States"], new { @required = "required" })</div>
+				</div>
+				<div class="item">
+					<div>@Html.LabelFor(model => model.physician.PhysicianPhoneNumber)</div>
+					<div>@Html.TextBoxFor(model => model.physician.PhysicianPhoneNumber, new { @required = "required" })</div>
+				</div>
+				
+			</div>
+
+
+
+			<div class="section">
+				<div class="item">
+					<p>Does your child have any food, medication, or environmental allergies? (check all that apply)</p>
+					<input type="radio" id="yes" name="Allergy" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="Allergy" value="0">
+					<label for="no">No</label><br>
+					<p>If yes, please list and explain:</p>
+					<div><textarea id="AllergyDescription" name="AllergyDescription" rows="4" cols="50" border="1">  </textarea></div>
+				</div>
+				<div class="item">
+					<p>Does your child's allergy/allergies require child care staff to monitor your child for symptoms, take action if reaction occurs, or give emergency medication to your child? (check one)</p>
+					<input type="radio" id="yes" name="AllergyIntervention" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="AllergyIntervention" value="0">
+					<label for="no">No</label><br>
+				</div>
+			</div>
+
+
+			<div class="section">
+				<div class="item">
+					<p>Does your child have a special health or medical condition?</p>
+					<input type="radio" id="yes" name="HealthCondition" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="HealthCondition" value="0">
+					<label for="no">No</label><br>
+					<p>If yes, please list and explain:</p>
+					<div><textarea id="HealthConditionDescription" name="HealthConditionDescription" rows="4" cols="50" border="1">  </textarea></div>
+				</div>
+				<div class="item">
+					<p>Does the special health or medical condition require child care staff to porform a procedure, or perform child specific care such as: to monitor your child for symptoms or administer medication during child care hours?</p>
+					<input type="radio" id="yes" name="HealthConditionIntervention" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="HealthConditionIntervention" value="0">
+					<label for="no">No</label><br>
+				</div>
+			</div>
+
+
+			<div class="section">
+				<div class="item">
+					<p>Is your child currently using any medication, food supplement, or medical food (such as an electrolyte solution)?</p>
+					<input type="radio" id="yes" name="Medication" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="Medication" value="0">
+					<label for="no">No</label><br>
+					<p>If yes, please list and explain:</p>
+					<div><textarea id="MedicationDescription" name="MedicationDescription" rows="4" cols="50" border="1">  </textarea></div>
+				</div>
+				<div class="item">
+					<p>If yes, does this medication, food supplement, or medical food need to be administered at the child care center?</p>
+					<input type="radio" id="yes" name="MedicationIntervention" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="MedicationIntervention" value="0">
+					<label for="no">No</label><br>
+				</div>
+			</div>
+
+
+			<div class="section">
+				<div class="item">
+					<p>Does your child have any dietary restrictions, including those for medical, religious, or cultural reasons?</p>
+					<input type="radio" id="yes" name="DietaryRestrictions" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="DietaryRestrictions" value="0">
+					<label for="no">No</label><br>
+					<p>If yes, please list and explain:</p>
+					<div><textarea id="DietaryRestrictionsDescription" name="DietaryRestrictionsDescription" rows="4" cols="50" border="1">  </textarea></div>
+				</div>
+				<div class="item">
+					<p>Does this dietary restriction require a modified diet that eliminates all types of fluid milk or an entire food group?</p>
+					<input type="radio" id="yes" name="DietaryRestrictionsIntervention" value="1">
+					<label for="yes">Yes</label><br>
+					<input type="radio" id="no" name="DietaryRestrictionsIntervention" value="0">
+					<label for="no">No</label><br>
+				</div>
+			</div>
+
+
+			<div>
+				<button id="btnSubmit" name="btnSubmit" value="submit" class="btn btn-success"> Submit</button>
+			</div>
+		}
+	}
+
+	else {
+		<h4>Please Log-in or Sign-up before starting an application</h4>
+		<br />
+		<h5>@Html.ActionLink("Log-In", "Login", "StudentApplication")</h5>
+		<h5>@Html.ActionLink("SignUp", "SignUp", "StudentApplication")</h5>
+	}
+}
+

@@ -1,0 +1,40 @@
+﻿@model IHLA_Template.Models.Employee
+
+@{
+    ViewBag.Title = "EmployeeHomePage";
+}
+
+@{
+    if (Model.EmployeeUser.IsEmployee == "Y")
+    {
+        <h3 style="font-size:36px; color:purple; font-family:'Comic Sans MS'">Welcome Back, @Model.EmployeeUser.FirstName </h3>
+
+        <div class="button-holder">
+            @Html.ActionLink("Classroom Roster", "ClassRoster", "Home", new { @class = "button-superxl" })
+        </div>
+
+        <div class="s-member-div">
+            <table>
+                <tr>
+                    <th>monday</th>
+                    <th>Tuesday</th>
+                    <th>Wensday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                </tr>
+                <tr>
+                    <th>9:00am - 6:00pm</th>
+                    <th>9:00am - 6:00pm</th>
+                    <th>9:00am - 6:00pm</th>
+                    <th>9:00am - 6:00pm</th>
+                    <th>9:00am - 6:00pm</th>
+                </tr>
+            </table>
+        </div>
+    }
+    else
+    {
+        <h4>Error: User is not an Employee</h4>
+    }
+}
+
